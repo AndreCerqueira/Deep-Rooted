@@ -44,7 +44,7 @@ public class MapManager : MonoBehaviour
 
     IEnumerator DestroyTiles()
     {
-        yield return new WaitForSeconds(UPDATE_CHUNK_DELAY * 4);
+        yield return new WaitForSeconds(UPDATE_CHUNK_DELAY * 6);
         int lastY = 0;
         while (true)
         {
