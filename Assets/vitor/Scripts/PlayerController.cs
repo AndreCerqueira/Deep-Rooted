@@ -49,6 +49,12 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.CompareTag("Resource"))
+        Destroy(collider.gameObject);
+    }
+
     private void FixedUpdate()
     {
         if (!playerCollider.IsTouchingLayers(LayerMask.GetMask("Obstacle")))
