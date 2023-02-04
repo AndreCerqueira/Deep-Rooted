@@ -21,10 +21,8 @@ public class TileDestroyer : MonoBehaviour
     {
 
         yield return new WaitForSeconds(delay);
-        print("total" + numContacts);
         for (int i = 0; i < numContacts; i++)
         {
-            print(i);
             Vector3Int cellPosition = tilemap.WorldToCell(contacts[i].point);
             cellPosition = cellPosition - new Vector3Int(0, 1, 0);
             tilemap.SetTile(cellPosition, null);
@@ -32,10 +30,14 @@ public class TileDestroyer : MonoBehaviour
             {
                 cellPosition = cellPosition + new Vector3Int(1, 0, 0);
                 tilemap.SetTile(cellPosition, null);
+                cellPosition = cellPosition + new Vector3Int(0, 1, 0);
+                tilemap.SetTile(cellPosition, null);
             }
             else if (Input.GetAxis("Horizontal") < 0)
             {
                 cellPosition = cellPosition - new Vector3Int(1, 0, 0);
+                tilemap.SetTile(cellPosition, null);
+                cellPosition = cellPosition + new Vector3Int(0, 1, 0);
                 tilemap.SetTile(cellPosition, null);
             }
         }

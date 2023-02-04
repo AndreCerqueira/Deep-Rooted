@@ -20,7 +20,7 @@ public class MapManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(CreateTiles());
-        StartCoroutine(DestroyTiles());
+        //StartCoroutine(DestroyTiles());
     }
 
 

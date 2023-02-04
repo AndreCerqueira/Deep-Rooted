@@ -400,7 +400,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      5x3_11: 1049803184
+      5x3_4: 1748360015
       5x3_2: -1384562938
       5x3_3: 696665191
       5x3_10: 1417255285
@@ -410,9 +410,9 @@ TextureImporter:
       5x3_6: -1524112702
       5x3_8: -751777406
       5x3_9: 1118301255
-      5x3_4: 1748360015
-      5x3_1: 653359958
+      5x3_11: 1049803184
       5x3_12: -870924401
+      5x3_1: 653359958
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
