@@ -58,6 +58,9 @@ public class PlayerController : MonoBehaviour
 
         float horizontal = Input.GetAxis("Horizontal");
         rigidBody2D.velocity = new Vector2(horizontal * horizontalSpeed, rigidBody2D.velocity.y);
+
+        // flip spriteSheet player
+        GetComponent<SpriteRenderer>().flipX = horizontal < 0;
     }
 
     private void Update()
