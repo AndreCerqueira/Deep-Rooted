@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,10 +12,8 @@ public class MapManager : MonoBehaviour
     private TileBase dirt;
     [SerializeField]
     private Tilemap tileMap;
-    [SerializeField]
-    private int width;
-    [SerializeField]
-    private int height;
+    public int width;
+    public int height;
 
 
     // Start is called before the first frame update
@@ -37,13 +36,7 @@ public class MapManager : MonoBehaviour
         int lastY = 0;
         while (true)
         {
-            for (int x = -width; x < width; x++)
-            {
-                for (int y = lastY; y > lastY - height; y--)
-                {
-                    tileMap.SetTile(new Vector3Int(x, y, 0), dirt);
-                }
-            }
+            CreateDirtChunk(lastY);
             lastY -= height;
             yield return new WaitForSeconds(UPDATE_CHUNK_DELAY);
         }
@@ -55,15 +48,32 @@ public class MapManager : MonoBehaviour
         int lastY = 0;
         while (true)
         {
-            for (int x = -width; x < width; x++)
-            {
-                for (int y = lastY; y > lastY - height; y--)
-                {
-                    tileMap.SetTile(new Vector3Int(x, y, 0), null);
-                }
-            }
+            DestroyDirtChunk(lastY);
             lastY -= height;
             yield return new WaitForSeconds(UPDATE_CHUNK_DELAY * 2);
+        }
+    }
+
+    
+    private void CreateDirtChunk(int lastY)
+    {
+        for (int x = -width; x < width; x++)
+        {
+            for (int y = lastY; y > lastY - height; y--)
+            {
+                tileMap.SetTile(new Vector3Int(x, y, 0), dirt);
+            }
+        }
+    }
+
+    private void DestroyDirtChunk(int lastY)
+    {
+        for (int x = -width; x < width; x++)
+        {
+            for (int y = lastY; y > lastY - height; y--)
+            {
+                tileMap.SetTile(new Vector3Int(x, y, 0), null);
+            }
         }
     }
 }
