@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 
 public class MapManager : MonoBehaviour
 {
-    const float UPDATE_CHUNK_DELAY = 1.5f;
+    const float UPDATE_CHUNK_DELAY = 0.5f;
 
     [SerializeField] 
     private TileBase dirt;
@@ -19,8 +19,8 @@ public class MapManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // StartCoroutine(CreateTiles());
-        // StartCoroutine(DestroyTiles());
+        StartCoroutine(CreateTiles());
+        StartCoroutine(DestroyTiles());
     }
 
 
@@ -33,24 +33,24 @@ public class MapManager : MonoBehaviour
     // Corroutine to create tiles in the tilemap from -width to width and -height to height
     IEnumerator CreateTiles()
     {
-        int lastY = 0;
+        int lastY = -20;
         while (true)
         {
             CreateDirtChunk(lastY);
-            lastY -= height;
-            yield return new WaitForSeconds(UPDATE_CHUNK_DELAY);
+            lastY -= 1;
+            yield return new WaitForSeconds(0.15f);
         }
     }
 
     IEnumerator DestroyTiles()
     {
-        yield return new WaitForSeconds(UPDATE_CHUNK_DELAY * 6);
+        yield return new WaitForSeconds(5f);
         int lastY = 0;
         while (true)
         {
             DestroyDirtChunk(lastY);
-            lastY -= height;
-            yield return new WaitForSeconds(UPDATE_CHUNK_DELAY * 2);
+            lastY -= 1;
+            yield return new WaitForSeconds(0.15f);
         }
     }
 
@@ -59,10 +59,7 @@ public class MapManager : MonoBehaviour
     {
         for (int x = -width; x < width; x++)
         {
-            for (int y = lastY; y > lastY - height; y--)
-            {
-                tileMap.SetTile(new Vector3Int(x, y, 0), dirt);
-            }
+            tileMap.SetTile(new Vector3Int(x, lastY, 0), dirt);
         }
     }
 
@@ -70,10 +67,7 @@ public class MapManager : MonoBehaviour
     {
         for (int x = -width; x < width; x++)
         {
-            for (int y = lastY; y > lastY - height; y--)
-            {
-                tileMap.SetTile(new Vector3Int(x, y, 0), null);
-            }
+            tileMap.SetTile(new Vector3Int(x, lastY, 0), null);
         }
     }
 }
