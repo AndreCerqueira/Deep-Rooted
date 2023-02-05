@@ -1446,7 +1446,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dirt: {fileID: 11400000, guid: d12fc754218bb9a438f25a82991b4f9e, type: 2}
+  root: {fileID: 11400000, guid: 6625506c546f4be42a20cdd8b93880db, type: 2}
   tileMap: {fileID: 1860829896}
+  player: {fileID: 1136797400}
   width: 50
   height: 30
 --- !u!1 &381115886
@@ -1708,7 +1710,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &382015546
 RectTransform:
   m_ObjectHideFlags: 0
