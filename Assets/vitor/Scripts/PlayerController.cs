@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rigidBody2D;
     private Collider2D playerCollider;
     private Animator animator;
+    private ObstacleGenerator obstacleGenerator;
     public bool isDead = false;
 
     private Tool tool = Tool.Pa;
@@ -33,7 +34,9 @@ public class PlayerController : MonoBehaviour
         playerCollider = GetComponent<BoxCollider2D>();
 
         animator = GetComponent<Animator>();
-        // animator.SetBool("isDead", false);
+
+
+        obstacleGenerator = GameObject.Find("Obstacle Generator").GetComponent<ObstacleGenerator>();
     }
 
     void OnCollisionStay2D(Collision2D other)
@@ -51,7 +54,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             print("Ferramenta Certa" + tool);
-            force = force;
+            force = 100f;
         }
 
     }
@@ -59,7 +62,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Resource")) {
-            
+
             Destroy(collision.gameObject);
         }
         else if (collision.gameObject.CompareTag("Obstacle"))
@@ -81,8 +84,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Resource"))
         {
-            print(this.gameObject.tag);
-
+            obstacleGenerator.DestroyResource(collision.gameObject);
             Destroy(collision.gameObject);
         }
         else if (collision.gameObject.CompareTag("Obstacle"))

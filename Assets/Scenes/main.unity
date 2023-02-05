@@ -2054,7 +2054,7 @@ MonoBehaviour:
   resourceMinY: 2
   resourceMaxY: 4
   obstacle: {fileID: 2957580726442728980, guid: 07e4dfff67f064d81b5f5088b1eaf641, type: 3}
-  resource: {fileID: 5168356249640293874, guid: 90be598d2ccb74fae9d0fdf9e2f140a6, type: 3}
+  resource: {fileID: 6269148014919743099, guid: a1122071e387a433283b44915d737f9d, type: 3}
 --- !u!1 &625161019
 GameObject:
   m_ObjectHideFlags: 0
@@ -24970,7 +24970,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1351347586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25741,7 +25741,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 260662371, guid: 57266eb8aa70f6846a959f2264c80f69, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bf4b6932c639f43eb8865734e1345add, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -23,8 +23,13 @@ public class Resource : MonoBehaviour
         // Destroy platform
         if (platformDestroyer.transform.position.y < transform.position.y)
         {
-            obstacleGenerator.DestroyResource(gameObject);
+            DestroyItself();
         }
+    }
+
+    public void DestroyItself()
+    {
+        obstacleGenerator.DestroyResource(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
