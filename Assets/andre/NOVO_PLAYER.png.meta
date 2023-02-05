@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 10938e6750cca7e408965cb4a34324f7
+guid: bc20e80d11fa4b044b97ea6e514ef7e3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Stone_break_obstaculo-Sheet_0
+      name: NOVO_PLAYER_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 256
-        height: 128
+        width: 320
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 92e784468fffae84ab81679c77809fe6
-      internalID: -1792846624
+      spriteID: 9bad2c16b713c1e44b4cf12efcb6ef80
+      internalID: -919352891
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Stone_break_obstaculo-Sheet_1
+      name: NOVO_PLAYER_1
       rect:
         serializedVersion: 2
-        x: 256
+        x: 320
         y: 0
-        width: 256
-        height: 128
+        width: 320
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b8f2289222a92dd43a8f97b87195fe41
-      internalID: 957282293
+      spriteID: 1145953ddb0f27d4185875996e1da9c9
+      internalID: 345592075
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Stone_break_obstaculo-Sheet_2
+      name: NOVO_PLAYER_2
       rect:
         serializedVersion: 2
-        x: 512
+        x: 640
         y: 0
-        width: 256
-        height: 128
+        width: 320
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,20 +173,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8d407da7372dc24baf820195a0eefdf
-      internalID: 1468157815
+      spriteID: 080feb8879d8e6a4ea04174e6d1ce1a5
+      internalID: -668172265
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Stone_break_obstaculo-Sheet_3
+      name: NOVO_PLAYER_3
       rect:
         serializedVersion: 2
-        x: 768
+        x: 960
         y: 0
-        width: 256
-        height: 128
+        width: 320
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,8 +194,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d1f209c74ebbb8341983c7c7aa14c4fe
-      internalID: 1748412642
+      spriteID: d0379a7986e7ceb43931019091c10a56
+      internalID: 1368925151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NOVO_PLAYER_4
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 866a0bc55085b8342a80a435dd8cb5c4
+      internalID: 394810386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NOVO_PLAYER_5
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 0
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0aaa881d6db215446b877c0a803cb932
+      internalID: -1841425632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NOVO_PLAYER_6
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 0
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80d57878eed6616409110bde55a8df1f
+      internalID: -380430957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NOVO_PLAYER_7
+      rect:
+        serializedVersion: 2
+        x: 2240
+        y: 0
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7032eb2236e966947ab2e6bd61f88733
+      internalID: -396618395
       vertices: []
       indices: 
       edges: []
@@ -211,10 +295,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Stone_break_obstaculo-Sheet_2: 1468157815
-      Stone_break_obstaculo-Sheet_0: -1792846624
-      Stone_break_obstaculo-Sheet_3: 1748412642
-      Stone_break_obstaculo-Sheet_1: 957282293
+      NOVO_PLAYER_3: 1368925151
+      NOVO_PLAYER_1: 345592075
+      NOVO_PLAYER_0: -919352891
+      NOVO_PLAYER_6: -380430957
+      NOVO_PLAYER_4: 394810386
+      NOVO_PLAYER_2: -668172265
+      NOVO_PLAYER_5: -1841425632
+      NOVO_PLAYER_7: -396618395
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -59,7 +59,16 @@ public class PlayerController : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Obstacle"))
         {
+            GetComponent<TileDestroyer>().stopGrow = true;
             collision.gameObject.GetComponent<Animator>().SetTrigger("Destroy");
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            GetComponent<TileDestroyer>().stopGrow = false;
         }
     }
 

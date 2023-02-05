@@ -10,6 +10,9 @@ public class TileDestroyer : MonoBehaviour
     public TileBase root;
     public Tilemap rootTilemap;
     public Vector3Int rootPosition;
+    public GameObject player;
+    public ResourceManager resourceManager;
+    public bool stopGrow = false;
 
     public Tilemap tilemap;
     public float delay = 0.05f;
@@ -100,45 +103,69 @@ public class TileDestroyer : MonoBehaviour
         }
     }
 
+    public static float CalcularValor(float entrada)
+    {
+        if (entrada >= 100)
+        {
+            return 0.5f;
+        }
+        else
+        {
+            return (100f - entrada) / 250f + 0.5f;
+        }
+    }
+
+
     private IEnumerator PlaceRootInSpaceDestroyed(Vector3Int cellPosition)
     {
-        yield return new WaitForSeconds(0.5f);
+        // Get Resource from Resource Manager
+        int value = resourceManager.resourceAmount;
+
+        // Get player position
+        Vector3 playerPosition = player.transform.position;
+        Vector3Int playerCellPosition = tilemap.WorldToCell(playerPosition);
+
+        // Wait for player to be at some distance
+        print("DISTANCE: " + Vector3.Distance(playerCellPosition, cellPosition));
+        while (stopGrow)
+        {
+            yield return new WaitForFixedUpdate();
+        }
+
+
+        float time = CalcularValor(value);
+        yield return new WaitForSeconds(time); // <----- change this to make root stay behind
         
         rootPosition = cellPosition;
         rootTilemap.SetTile(cellPosition, root);
-        
-        
-        StartCoroutine(DestroyRootTileAfterTime(cellPosition));
+
+        // StartCoroutine(DestroyRootTileAfterPlayerDistant(cellPosition));
     }
 
-    private IEnumerator DestroyRootTileAfterTime(Vector3Int cellPosition)
+    private IEnumerator DestroyRootTileAfterPlayerDistant(Vector3Int cellPosition)
     {
-        yield return new WaitForSeconds(1.5f);
-        rootTilemap.SetTile(cellPosition, null);
+        bool isDistant = false;
+        while (!isDistant)
+        {
+            yield return new WaitForSeconds(0.1f);
+
+            // Get player position
+            Vector3 playerPosition = player.transform.position;
+            Vector3Int playerPositionInTilemap = rootTilemap.WorldToCell(playerPosition);
+
+            // Get distance between player and root
+            int distanceToRoot = playerPositionInTilemap.y - rootPosition.y;
+            // Destroy tiles
+            if (distanceToRoot < -5)
+            {
+                rootTilemap.SetTile(cellPosition, null);
+                isDistant = true;
+            }
+
+        }
     }
 
-    //private IEnumerator PlaceRootInSpaceDestroyed()
-    //{
-    //    yield return new WaitForSeconds(delay);
-    //    for (int i = 0; i < 16; i++)
-    //    {
-    //        Vector3Int cellPosition = tilemap.WorldToCell(contacts[i].point);
-    //        cellPosition = cellPosition - new Vector3Int(0, 1, 0);
-    //        tilemap.SetTile(cellPosition, root);
-    //        if (Input.GetAxis("Horizontal") > 0)
-    //        {
-    //            cellPosition = cellPosition + new Vector3Int(1, 0, 0);
-    //            tilemap.SetTile(cellPosition, root);
-    //            cellPosition = cellPosition + new Vector3Int(0, 1, 0);
-    //            tilemap.SetTile(cellPosition, root);
-    //        }
-    //        else if (Input.GetAxis("Horizontal") < 0)
-    //        {
-    //            cellPosition = cellPosition - new Vector3Int(1, 0, 0);
-    //            tilemap.SetTile(cellPosition, root);
-    //            cellPosition = cellPosition + new Vector3Int(0, 1, 0);
-    //            tilemap.SetTile(cellPosition, root);
-    //        }
-    //    }
-    //}
+
+
+
 }

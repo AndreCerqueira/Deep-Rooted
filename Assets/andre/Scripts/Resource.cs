@@ -7,7 +7,7 @@ public class Resource : MonoBehaviour
     private GameObject platformDestroyer;
     private ObstacleGenerator obstacleGenerator;
 
-    public int resource = 10;
+    public int resource = 30;
 
     // Start is called before the first frame update
     void OnEnable()

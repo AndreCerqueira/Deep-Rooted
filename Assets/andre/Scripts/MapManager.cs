@@ -15,6 +15,8 @@ public class MapManager : MonoBehaviour
     [SerializeField]
     private Tilemap tileMap;
     [SerializeField]
+    private Tilemap rootTileMap;
+    [SerializeField]
     GameObject player;
     public int width;
     public int height;
@@ -72,6 +74,7 @@ public class MapManager : MonoBehaviour
         for (int x = -width; x < width; x++)
         {
             tileMap.SetTile(new Vector3Int(x, y, 0), null);
+            rootTileMap.SetTile(new Vector3Int(x, y, 0), null);
         }
     }
 
