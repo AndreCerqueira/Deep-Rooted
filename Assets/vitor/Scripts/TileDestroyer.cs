@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
+using UnityEngine.WSA;
 
 public class TileDestroyer : MonoBehaviour
 {
     public TileBase root;
+    public Tilemap rootTilemap;
+    public Vector3Int rootPosition;
+
     public Tilemap tilemap;
     public float delay = 0.05f;
     private ContactPoint2D[] contacts = new ContactPoint2D[16];
@@ -46,6 +50,38 @@ public class TileDestroyer : MonoBehaviour
             Vector3Int cellPosition = tilemap.WorldToCell(contacts[i].point);
             cellPosition = cellPosition - new Vector3Int(0, 1, 0);
             tilemap.SetTile(cellPosition, null);
+
+            if (i == 0) {
+
+
+                while (rootPosition.x != cellPosition.x || rootPosition.y != cellPosition.y)
+                {
+                    if (rootPosition.x > cellPosition.x)
+                    {
+                        rootPosition.x -= 1;
+                    }
+                    else if (rootPosition.x < cellPosition.x)
+                    {
+                        rootPosition.x += 1;
+                    }
+                    else if (rootPosition.y > cellPosition.y)
+                    {
+                        rootPosition.y -= 1;
+                    }
+                    else if (rootPosition.y < cellPosition.y)
+                    {
+                        rootPosition.y += 1;
+                    }
+                    StartCoroutine(PlaceRootInSpaceDestroyed(rootPosition));
+                    // rootTilemap.SetTile(rootPosition, root);
+                }
+
+
+                    // StartCoroutine(PlaceRootInSpaceDestroyed(cell));
+
+
+                }
+
             if (Input.GetAxis("Horizontal") > 0)
             {
                 cellPosition = cellPosition + new Vector3Int(1, 0, 0);
@@ -60,33 +96,48 @@ public class TileDestroyer : MonoBehaviour
                 cellPosition = cellPosition + new Vector3Int(0, 1, 0);
                 tilemap.SetTile(cellPosition, null);
             }
-
-            StartCoroutine(PlaceRootInSpaceDestroyed());
         }
     }
 
-    private IEnumerator PlaceRootInSpaceDestroyed()
+    private IEnumerator PlaceRootInSpaceDestroyed(Vector3Int cellPosition)
     {
-        yield return new WaitForSeconds(delay);
-        for (int i = 0; i < 16; i++)
-        {
-            Vector3Int cellPosition = tilemap.WorldToCell(contacts[i].point);
-            cellPosition = cellPosition - new Vector3Int(0, 1, 0);
-            tilemap.SetTile(cellPosition, root);
-            if (Input.GetAxis("Horizontal") > 0)
-            {
-                cellPosition = cellPosition + new Vector3Int(1, 0, 0);
-                tilemap.SetTile(cellPosition, root);
-                cellPosition = cellPosition + new Vector3Int(0, 1, 0);
-                tilemap.SetTile(cellPosition, root);
-            }
-            else if (Input.GetAxis("Horizontal") < 0)
-            {
-                cellPosition = cellPosition - new Vector3Int(1, 0, 0);
-                tilemap.SetTile(cellPosition, root);
-                cellPosition = cellPosition + new Vector3Int(0, 1, 0);
-                tilemap.SetTile(cellPosition, root);
-            }
-        }
+        yield return new WaitForSeconds(0.5f);
+        
+        rootPosition = cellPosition;
+        rootTilemap.SetTile(cellPosition, root);
+        
+        
+        StartCoroutine(DestroyRootTileAfterTime(cellPosition));
     }
+
+    private IEnumerator DestroyRootTileAfterTime(Vector3Int cellPosition)
+    {
+        yield return new WaitForSeconds(1.5f);
+        rootTilemap.SetTile(cellPosition, null);
+    }
+
+    //private IEnumerator PlaceRootInSpaceDestroyed()
+    //{
+    //    yield return new WaitForSeconds(delay);
+    //    for (int i = 0; i < 16; i++)
+    //    {
+    //        Vector3Int cellPosition = tilemap.WorldToCell(contacts[i].point);
+    //        cellPosition = cellPosition - new Vector3Int(0, 1, 0);
+    //        tilemap.SetTile(cellPosition, root);
+    //        if (Input.GetAxis("Horizontal") > 0)
+    //        {
+    //            cellPosition = cellPosition + new Vector3Int(1, 0, 0);
+    //            tilemap.SetTile(cellPosition, root);
+    //            cellPosition = cellPosition + new Vector3Int(0, 1, 0);
+    //            tilemap.SetTile(cellPosition, root);
+    //        }
+    //        else if (Input.GetAxis("Horizontal") < 0)
+    //        {
+    //            cellPosition = cellPosition - new Vector3Int(1, 0, 0);
+    //            tilemap.SetTile(cellPosition, root);
+    //            cellPosition = cellPosition + new Vector3Int(0, 1, 0);
+    //            tilemap.SetTile(cellPosition, root);
+    //        }
+    //    }
+    //}
 }
