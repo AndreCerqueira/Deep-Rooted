@@ -15,8 +15,13 @@ public class ObstacleGenerator : MonoBehaviour
     public int obstacleCount = 1;
     public int resourceQuantity = 10; // upgrade to 20 later
     public int resourceCount = 1;
-    public float minY;
-    public float maxY;
+
+    public float obstacleMinY;
+    public float obstacleMaxY;
+
+    public float resourceMinY;
+    public float resourceMaxY;
+
     float scoreNeededToIncreasePlatformDistance = scoreIncreaseValue;
 
     [Header("Obstacles")]
@@ -48,8 +53,8 @@ public class ObstacleGenerator : MonoBehaviour
         if (GameManager.score > scoreNeededToIncreasePlatformDistance)
         {
             scoreNeededToIncreasePlatformDistance += scoreIncreaseValue;
-            minY -= 1;
-            maxY -= 2;
+            obstacleMinY -= 1;
+            resourceMaxY -= 2;
         }
 
     }
@@ -58,7 +63,7 @@ public class ObstacleGenerator : MonoBehaviour
     public void CreateObstacle()
     {
         // get a value between minY, maxY
-        float y = Random.Range(minY, maxY);
+        float y = Random.Range(obstacleMinY, obstacleMaxY);
         spawnObstaclePosition.y -= y;
         spawnObstaclePosition.x = Random.Range(-levelWidth, levelWidth);
         
@@ -85,7 +90,7 @@ public class ObstacleGenerator : MonoBehaviour
     public void CreateResource()
     {
         // get a value between minY, maxY
-        float y = Random.Range(minY, maxY);
+        float y = Random.Range(resourceMinY, resourceMaxY);
         spawnResourcePosition.y -= y;
         spawnResourcePosition.x = Random.Range(-levelWidth, levelWidth);
 

@@ -19,7 +19,7 @@ public class ResourceManager : MonoBehaviour
             instance = this;
         }
 
-        InvokeRepeating("ReduceResource", 1.0f, 0.5f);
+        InvokeRepeating("ReduceResource", 1.0f, 0.8f);
     }
 
     public void ReduceResource()
@@ -33,6 +33,9 @@ public class ResourceManager : MonoBehaviour
         resourceAmount += resource;
         if (resourceAmount > 100)
             resourceAmount = 100;
+
+        if (resourceAmount < 0)
+            resourceAmount = 0;
 
         text.text = resourceAmount.ToString();
     }

@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.CompareTag("Resource"))
+        if (collider.gameObject.CompareTag("Resource") || collider.gameObject.CompareTag("Obstacle"))
         Destroy(collider.gameObject);
     }
 

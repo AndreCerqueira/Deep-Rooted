@@ -472,7 +472,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -774,14 +774,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnObstaclePosition: {x: 0, y: -5, z: 0}
   spawnResourcePosition: {x: 0, y: -5, z: 0}
-  obstacleQuantity: 30
-  obstacleCount: 1
-  resourceQuantity: 30
-  resourceCount: 1
-  minY: 4
-  maxY: 8
-  obstacle: {fileID: 7528311698779062585, guid: a5cbf3a1d82947d41ab436779bc756d9, type: 3}
-  resource: {fileID: 9015085334462304038, guid: d4c2aa1bb08b2e44d908dd34c4375e96, type: 3}
+  obstacleQuantity: 600
+  obstacleCount: 200
+  resourceQuantity: 300
+  resourceCount: 200
+  obstacleMinY: 0.5
+  obstacleMaxY: 2.5
+  resourceMinY: 2
+  resourceMaxY: 4
+  obstacle: {fileID: 2957580726442728980, guid: 07e4dfff67f064d81b5f5088b1eaf641, type: 3}
+  resource: {fileID: 5168356249640293874, guid: 90be598d2ccb74fae9d0fdf9e2f140a6, type: 3}
 --- !u!1 &686478583
 GameObject:
   m_ObjectHideFlags: 0
@@ -25110,7 +25112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 100
-  horizontalSpeed: 5
+  horizontalSpeed: 3.5
 --- !u!212 &1683870061
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25363,7 +25365,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 27.000122, y: -53.00009}
+  m_AnchoredPosition: {x: 27.000122, y: -53.00006}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1834474870
