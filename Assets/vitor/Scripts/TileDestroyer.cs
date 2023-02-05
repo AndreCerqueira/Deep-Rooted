@@ -24,6 +24,42 @@ public class TileDestroyer : MonoBehaviour
         StartCoroutine(DestroyExtraTiles());
     }
 
+
+
+    private void Update()
+    {
+        // Get player position in tilemap
+        Vector3 playerPosition = player.transform.position;
+        Vector3Int playerPositionInTilemap = tilemap.WorldToCell(playerPosition);
+
+        // rootPosition
+
+        // Get distance between player and rootPosition
+        int distanceToRootPosition = playerPositionInTilemap.y - rootPosition.y;
+
+        print(distanceToRootPosition);
+
+        if (distanceToRootPosition < -11)
+        {
+            // trigger game over
+            print("Game Over");
+
+            // Disable tilemap named Root
+            rootTilemap.gameObject.SetActive(false);
+
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+
+            // play audio
+            GetComponent<Animator>().SetTrigger("death");
+            GetComponent<PlayerController>().enabled = false;
+            this.enabled = false;
+        }
+
+    }
+
+
+
     void OnCollisionStay2D(Collision2D other)
     {
         int numContacts = other.GetContacts(contacts);

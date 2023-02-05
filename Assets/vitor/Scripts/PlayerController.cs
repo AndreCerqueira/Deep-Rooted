@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public enum Tool
 {
@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
         playerCollider = GetComponent<BoxCollider2D>();
 
         animator = GetComponent<Animator>();
-        animator.SetBool("isDead", false);
+        // animator.SetBool("isDead", false);
     }
 
     void OnCollisionStay2D(Collision2D other)
@@ -125,5 +125,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+
+    public void GoToDeathScene()
+    {
+        SceneManager.LoadScene("DeathScene");
+    }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(0.2f);
+        SceneManager.LoadScene("DeathScene");
+    }
 
 }
