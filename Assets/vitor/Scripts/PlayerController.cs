@@ -17,10 +17,12 @@ public class PlayerController : MonoBehaviour
     public float force = 100.0f;
     public float horizontalSpeed = 5.0f;
 
-    public AudioSource pickup;
+    //public AudioSource pickup;
 
     private Rigidbody2D rigidBody2D;
     private Collider2D playerCollider;
+    private Animator animator;
+    public bool isDead = false;
 
     private Tool tool = Tool.Pa;
 
@@ -29,6 +31,9 @@ public class PlayerController : MonoBehaviour
     {
         rigidBody2D = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<BoxCollider2D>();
+
+        animator = GetComponent<Animator>();
+        animator.SetBool("isDead", false);
     }
 
     void OnCollisionStay2D(Collision2D other)
@@ -76,8 +81,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Resource"))
         {
-            print(this.gameObject);
-            pickup.Play();
+            print(this.gameObject.tag);
 
             Destroy(collision.gameObject);
         }
@@ -91,6 +95,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!playerCollider.IsTouchingLayers(LayerMask.GetMask("Obstacle")))
         {
+            if (!isDead)
             rigidBody2D.AddForce(new Vector2(0, -force));
         }
 

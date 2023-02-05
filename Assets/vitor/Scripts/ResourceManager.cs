@@ -6,6 +6,9 @@ using Mono.Cecil;
 
 public class ResourceManager : MonoBehaviour
 {
+    public Animator animator;
+    public PlayerController player;
+
 
     public static ResourceManager instance;
     public TextMeshProUGUI text;
@@ -32,6 +35,11 @@ public class ResourceManager : MonoBehaviour
     {
         resourceAmount += resource;
 
+        if (resourceAmount <= -80)
+        {
+            //player.isDead = true;
+            //animator.SetBool("isDead", true);
+        }
         text.text = resourceAmount.ToString();
     }
 }
