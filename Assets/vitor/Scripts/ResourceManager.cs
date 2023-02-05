@@ -27,7 +27,7 @@ public class ResourceManager : MonoBehaviour
 
     public void ReduceResource()
     {
-        // resourceAmount -= 4;
+        resourceAmount -= 10;
         text.text = resourceAmount.ToString();
     }
 
