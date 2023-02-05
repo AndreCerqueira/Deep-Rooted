@@ -32,6 +32,7 @@ public class Resource : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             ResourceManager.instance.ChangeResource(resource);
+            obstacleGenerator.DestroyResource(gameObject);
         }
     }
 }

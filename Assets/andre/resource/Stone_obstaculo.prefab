@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6450236887073338588}
   - component: {fileID: 4973731817982031805}
   - component: {fileID: 4906267267866558986}
+  - component: {fileID: 1359940918}
   m_Layer: 0
   m_Name: Stone_obstaculo
   m_TagString: Obstacle
@@ -96,7 +97,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -115,3 +116,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resource: -15
+--- !u!95 &1359940918
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2957580726442728980}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3bdea9cfb4fe1da47a2a53eae88a4088, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0

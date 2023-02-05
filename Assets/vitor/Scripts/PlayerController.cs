@@ -49,10 +49,27 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collider)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collider.gameObject.CompareTag("Resource") || collider.gameObject.CompareTag("Obstacle"))
-        Destroy(collider.gameObject);
+        if (collision.gameObject.CompareTag("Resource")) {
+            Destroy(collision.gameObject);
+        }
+        else if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            collision.gameObject.GetComponent<Animator>().SetTrigger("Destroy");
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Resource"))
+        {
+            Destroy(collision.gameObject);
+        }
+        else if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            collision.gameObject.GetComponent<Animator>().SetTrigger("Destroy");
+        }
     }
 
     private void FixedUpdate()

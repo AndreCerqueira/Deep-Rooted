@@ -18,17 +18,30 @@ public class Obstacle : MonoBehaviour
 
     }
 
+    
     // Update is called once per frame
     void Update()
     {
         // Destroy platform
         if (platformDestroyer.transform.position.y < transform.position.y)
         {
-            obstacleGenerator.DestroyObstacle(gameObject);
+            DestroyItself();
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    
+    public void DestroyItself() 
+    { 
+        obstacleGenerator.DestroyObstacle(gameObject);
+    }
+    
+
+    public void AnimateDestruction()
+    {
+        GetComponent<Animator>().SetTrigger("Destroy");
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {

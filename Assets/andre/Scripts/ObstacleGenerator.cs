@@ -11,9 +11,9 @@ public class ObstacleGenerator : MonoBehaviour
     // Global Variables
     public Vector3 spawnObstaclePosition = new Vector3(0, -5, 0);
     public Vector3 spawnResourcePosition = new Vector3(0, -5, 0);
-    public int obstacleQuantity = 10; // upgrade to 20 later
+    public int obstacleQuantity; // upgrade to 20 later
     public int obstacleCount = 1;
-    public int resourceQuantity = 10; // upgrade to 20 later
+    public int resourceQuantity; // upgrade to 20 later
     public int resourceCount = 1;
 
     public float obstacleMinY;
