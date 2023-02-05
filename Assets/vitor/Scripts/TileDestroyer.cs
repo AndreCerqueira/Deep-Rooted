@@ -24,6 +24,7 @@ public class TileDestroyer : MonoBehaviour
     void OnCollisionStay2D(Collision2D other)
     {
         int numContacts = other.GetContacts(contacts);
+        
         if(numContacts > 0)
         StartCoroutine(DestroyTilesAfterDelay(other, numContacts));
     }

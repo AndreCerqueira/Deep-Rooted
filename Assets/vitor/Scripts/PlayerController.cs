@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     public float force = 100.0f;
     public float horizontalSpeed = 5.0f;
 
+    public AudioSource pickup;
+
     private Rigidbody2D rigidBody2D;
     private Collider2D playerCollider;
 
@@ -26,7 +28,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rigidBody2D = GetComponent<Rigidbody2D>();
-        playerCollider = GetComponent<Collider2D>();
+        playerCollider = GetComponent<BoxCollider2D>();
     }
 
     void OnCollisionStay2D(Collision2D other)
@@ -52,6 +54,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Resource")) {
+            
             Destroy(collision.gameObject);
         }
         else if (collision.gameObject.CompareTag("Obstacle"))
@@ -64,6 +67,9 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Resource"))
         {
+            print(this.gameObject);
+            pickup.Play();
+
             Destroy(collision.gameObject);
         }
         else if (collision.gameObject.CompareTag("Obstacle"))
@@ -84,6 +90,7 @@ public class PlayerController : MonoBehaviour
 
         // flip spriteSheet player
         GetComponent<SpriteRenderer>().flipX = horizontal < 0;
+
     }
 
     private void Update()
