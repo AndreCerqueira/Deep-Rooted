@@ -11,12 +11,31 @@ public class TileDestroyer : MonoBehaviour
     public float delay = 0.05f;
     private ContactPoint2D[] contacts = new ContactPoint2D[16];
 
+    private void Start()
+    {
+        // DestroyExtraTiles, 5sec delay, 0.05sec delay
+        StartCoroutine(DestroyExtraTiles());
+    }
+
     void OnCollisionStay2D(Collision2D other)
     {
         int numContacts = other.GetContacts(contacts);
         if(numContacts > 0)
         StartCoroutine(DestroyTilesAfterDelay(other, numContacts));
     }
+
+
+    private IEnumerator DestroyExtraTiles() 
+    {
+        yield return new WaitForSeconds(0.2f);
+
+        Tilemap temp = GameObject.Find("Extra").GetComponent<Tilemap>();
+
+        // Destroy all extra tiles
+        temp.ClearAllTiles();
+
+    }
+
 
     private IEnumerator DestroyTilesAfterDelay(Collision2D other, int numContacts)
     {
